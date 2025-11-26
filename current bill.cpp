@@ -1,43 +1,36 @@
-#include<stdio.h>
-int main()
-{
-	int units;
-	float amount,charge,total_amount;
-	printf("Enter the units:");
-	scanf("%d",&units);
-	if(units<=50)
-	{
-	amount=units*2.50;
-	charge=30;
-	}
-	if(units<=100)
-	{
-	amount=units*3.00;
-	charge=50;
-	}
-	if(units<=200)
-	{
-	amount=units*3.50;
-	charge=75;
-	}
-	if(units<=300)
-	{
-	amount=units*4.0;
-	charge=100;
-	}
-	else{
-	
-	amount=units*5.0;
-	charge=125;
+#include <stdio.h>
+
+int main() {
+    int units;
+    float amount, surcharge, total;
+
+    scanf("%d", &units);
+
+    // Calculate amount based on units
+    if (units < 200) {
+        amount = units * 1.20;
     }
-	
-	total_amount=amount+charge;
-	printf("the total amount is:");
-	printf("%.2f",total_amount);
-     
-	return 0;
-	
-	
-	
-	
+    else if (units >= 200 && units < 400) {
+        amount = units * 1.50;
+    }
+    else if (units >= 400 && units < 600) {
+        amount = units * 1.80;
+    }
+    else {
+        amount = units * 2.00;
+    }
+
+    // Apply surcharge rules
+    if (amount > 400) {
+        surcharge = amount * 0.15;
+    } else {
+        surcharge = 100;   // minimum surcharge
+    }
+
+    total = amount + surcharge;
+
+    printf("%.2f", total);
+
+    return 0;
 }
+
